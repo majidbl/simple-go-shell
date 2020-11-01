@@ -6,11 +6,13 @@ import (
      "fmt"
      "strings"
      "time"
-     "reflect"
 )
+// string channel for get and print user input
 var inch = make(chan string)
+// for set wait time
 var ticker = time.NewTicker(5 * time.Second)
 func main() {
+
   for{
     //t := time.Now()
     go getinput()
@@ -25,13 +27,9 @@ func main() {
   }
 }
 
-func getinput(){
-  
-  
+func getinput(){  
     reader := bufio.NewReader(os.Stdin)
-
     fmt.Print("Enter your name: ")
-    
     name, _ := reader.ReadString('\n')
     namesplit := strings.Split(name," ")
     str := strings.TrimRight(namesplit[len(namesplit)-1], "\n")
@@ -39,6 +37,4 @@ func getinput(){
       os.Exit(0)
     }
     inch <- namesplit[len(namesplit)-1]
-    fmt.Println(reflect.TypeOf(namesplit[len(namesplit)-1]))
-    
 }
