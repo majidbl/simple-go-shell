@@ -12,7 +12,6 @@ var inch = make(chan string)
 // for set wait time
 var ticker = time.NewTicker(5 * time.Second)
 func main() {
-
   for{
     //t := time.Now()
     go getinput()
